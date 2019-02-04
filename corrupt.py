@@ -22,10 +22,9 @@ print(wrap("PREPERATION"))
 root = tk.Tk()
 root.withdraw()
 
-print
 print("Select File...")
 file_path = filedialog.askopenfilename(filetypes = (("Word Documents","*.docx *.txt"),("All Files","*.*")))
-print("File Loaded... Processing")
+print("{} Loaded... Processing".format(os.path.basename(file_path)))
 if ".docx" in file_path:
     text = docx2txt.process(file_path)
 else:
@@ -40,7 +39,7 @@ print("Generating seed using document")
 print("seed =", seed)
 random.seed(seed)
 clear()
-print(wrap("CORRUPTED TEXT"))
+print(wrap("CORRUPTED {}".format(os.path.basename(file_path).upper())))
 print("\n")
 text = re.split('(\W)', text)
 for i in range(len(text)):
