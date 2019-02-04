@@ -58,14 +58,17 @@ def corrupt(text):
 print(wrap("PREPERATION"))
 # load tkinter without creating a window in order to allow file dialogs
 root = tk.Tk()
-root.withdraw() 
+root.withdraw()
+
 
 def main():
     """The main function, calls all other functions"""
     print("Select a File to corrupt")
     file_path = filedialog.askopenfilename(filetypes = (("Word Documents","*.docx *.txt"),("All Files","*.*")))
     text = read(file_path)
+    generateSeed(text)
     print("{} Loaded...".format(os.path.basename(file_path)))
+    clear()
 
     corrupted = corrupt(text)
 
